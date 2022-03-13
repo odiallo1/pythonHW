@@ -1,10 +1,10 @@
 import numpy as np
 
-BOARD_ROWS = 3
-BOARD_COLS = 4
-WIN_STATE = (0, 3)
+BOARD_ROWS = 5
+BOARD_COLS = 10
+WIN_STATE = (0, 9)
 LOSE_STATE = (1, 3)
-START = (2, 0)
+START = (3, 0)
 DETERMINISTIC = False
 
 
@@ -134,7 +134,7 @@ class Agent:
         self.State = State()
         self.isEnd = self.State.isEnd
 
-    def play(self, rounds=100):
+    def play(self, rounds=1):
         i = 0
         while i < rounds:
             # to the end of game back propagate reward
@@ -169,10 +169,11 @@ class Agent:
 
 
 if __name__ == "__main__":
+    np.random.seed(0)
     ag = Agent()
     print("initial Q-values ... \n")
     print(ag.Q_values)
 
-    ag.play(50)
+    ag.play(1)
     print("latest Q-values ... \n")
     print(ag.Q_values)
